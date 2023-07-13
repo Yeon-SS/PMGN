@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src ="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Document</title>
+
+     <style>
+
+        #box {
+            width: 70%;
+            height: 250px;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 10%;
+        }
+
+        h2 {
+            margin-bottom: 50px;
+            color: rgb(228, 160, 83);
+            border-bottom: 3px double;
+        }
+
+        input {
+            margin-bottom: 20px;
+            width: 180px;
+            height: 25px;
+            border-color: rgb(253, 227, 198);
+            outline-color: rgb(252, 185, 174);
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        button {
+            margin-bottom: 20px;
+            width: 90px;
+            height: 28px;
+            border-radius: 5px;
+            border: 1px solid greenyellow;
+            background-color: rgb(255, 255, 218);
+            outline-color: rgb(127, 180, 155);
+        }   
+        
+        button:hover {
+            background-color: rgb(232, 255, 185);
+            border-color: rgb(197, 197, 255);
+        }
+
+     </style>
+
+</head>
+<body>
+
+    <div id="box">
+
+    <h2>버튼으로 숫자식 계산하기</h2>
+
+        <div id="app">
+            <input v-model.number="num1" type="number">
+            <input v-model.number="num2" type="number"> <br />
+            <button v-on:click="countP">덧샘계산</button>
+            <button v-on:click="countM">뺄샘계산</button>
+            <button v-on:click="countG">곱샘계산</button>
+            <button v-on:click="countN">나눗샘계산</button><br />
+            <button v-on:click="reset">초기화</button> <br />
+            
+            <h4>결과는 {{ myNumber }}입니다.</h4>
+        </div>
+
+    </div>
+
+    <script>
+        
+        new Vue({
+            el : "#app",
+            data : {
+                num1 : "",
+                num2 : "",
+                myNumber : 0
+            },
+            methods : {
+                countP : function() {
+                    this.myNumber = this.num1 + this.num2
+                },
+                countM : function() {
+                    this.myNumber = this.num1 - this.num2
+                },
+                countG : function() {
+                    this.myNumber = this.num1 * this.num2
+                },
+                countN : function() {
+                    this.myNumber = this.num1 / this.num2
+                },
+                reset : function() {
+                    this.myNumber = "0",
+                    this.num1 = "",
+                    this.num2 = ""
+                },
+                }
+        })
+
+    </script>
+    
+</body>
+</html>
